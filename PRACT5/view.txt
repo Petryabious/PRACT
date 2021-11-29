@@ -1,0 +1,13 @@
+
+CREATE VIEW information_about_ptgrapher AS
+SELECT ptg.last_name, ptg.first_name, ptg.middle_name, ptg.work_exp, c.maker, c.model
+FROM ptgrapher AS ptg INNER JOIN camera AS c on ptg.id_camera=c.id_camera;
+
+
+CREATE VIEW information_about_photo AS
+SELECT p.name_photo, p.content, p.size, p.color, f.format_name, t.type_name, g.genre_name,
+ptg.last_name 
+FROM photos AS p INNER JOIN format AS f on p.id_format=f.id_format
+INNER JOIN type AS t on t.id_type=p.id_type
+INNER JOIN genre AS g on g.id_genre=p.id_genre
+INNER JOIN ptgrapher as pt on pt.id_ptgrapher=p.id_ptgrapher;  

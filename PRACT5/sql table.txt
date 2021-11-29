@@ -1,0 +1,68 @@
+CREATE DATABASE BDphotos;
+USE DATABASE BDphotos;
+
+CREATE TABLE photos
+(
+	id_photo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	name_photo VARCHAR(50) NOT NULL,
+	content BLOB NOT NULL,
+	size VARCHAR(25) NOT NULL,
+	color VARCHAR(10) NOT NULL,
+	id_format INT NOT NULL,
+	id_type INT NOT NULL,
+	id_genre INT NOT NULL,
+	id_ptgrapher INT NOT NULL,
+	FOREIGN KEY (id_format) REFERENCES formats(id_format),
+	FOREIGN KEY (id_type) REFERENCES types (id_type),
+	FOREIGN KEY (id_genre) REFERENCES genres (id_genre),
+	FOREIGN KEY (id_ptgrapher) REFERENCES ptgrapher (id_ptgrapher)
+
+);
+
+CREATE TABLE formats
+(
+	id_format INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	name_format VARCHAR(10) NOT NIULL UNIQUE
+);
+
+CREATE TABLE types
+(
+	id_types INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	name_type VARCHAR(15) NOT NULL UNIQUE
+);
+
+CREATE TABLE genres
+(
+	id_genre INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	name_genre VARCHAR(50) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE ptgrapher
+(
+	id_ptgrapher INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	first_name VARCHAR(30) NOT NULL,
+	last_name VARCHAR(30) NOT NULL,
+	middle_name VARCHAR(30) NOT NULL,
+	work_exp FLOAT  NOT NULL,
+	id_camera INT NOT NULL,
+	FOREIGN KEY (id_camera) REFERENCES camera (id_camera)
+);
+
+CREATE TABLE camera
+(
+	id_camera INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	maker VARCHAR(50) NOT NULL,
+	model VARCHAR(50) NOT NULL,
+	matrix VARCHAR(50) NOT NULL,
+	lens VARCHAR(50) NOT NULL
+);
+
+
+
+
+
+
+
+
+
